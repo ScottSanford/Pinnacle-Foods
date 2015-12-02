@@ -48,7 +48,7 @@ function fetchSuccess() {
     //console.log("FETCH successful! ds=", ds);
 
     // Save JSON
-    console.log("Saving JSON: " , ds.toJSON());
+    // console.log("Saving JSON: " , ds.toJSON());
     // XXX
 
     chart = new Highcharts.Chart({
@@ -112,20 +112,18 @@ function fetchSuccess() {
                         click: function () {
                             $("#loading").show();
 
-                            var month = parseInt($(this)[0].category);
-                            var team = $(this)[0].series.name;
+                            var month = $(this)[0].category;
+                            var category = $(this)[0].series.name;
 
                             $("#subchart_container").show();
 
                             // Pull data from Dataset
                             var data = ds.rows(function (row) {
 
-                                return row.Month === month && row.Team === team;
+                                return row.Month === month && row.Team === category;
+
                             }).columns(['Region', 'Sales']).toJSON();
-                            // console.log(data);
-                            console.log("ds.rows=",ds.rows());
-                            console.log("data=",data);
-                            globaldata = data;
+
                             // Remap Sales to y and Product to name for Highcharts
                             $.each(data, function (i, point) {
                                 point.y = point.Sales;
