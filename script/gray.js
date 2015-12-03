@@ -4,7 +4,7 @@
  */
 
 Highcharts.theme = {
-	colors: ["#E9C542", "#5dade2", "#DE2812", "#71A73E", "#D45F2C", "#CCCCCB"], // colors for each section
+	colors: ["#5dade2", "#71A73E", "#E9C542", "#D45F2C", "#DE2812", "#CCCCCB"], // colors for each section
 	chart: {
 		borderWidth: 0,
 		borderRadius: 15,

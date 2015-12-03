@@ -1,11 +1,14 @@
 $(function () {
 
+    document.ontouchmove = function(event){
+          event.preventDefault();
+    }
+
     $(document).ready(function () {
 
-        $(document).on("touchstart", ".exit", function () {
-            window.open("mfly://control/done");
-        });
-
+        $('.exit').on('touchstart click', function(){
+            mflyCommands.close();
+        })
         $("#loading").show();
 
         initDataset();
@@ -66,7 +69,7 @@ function fetchSuccess() {
             text: 'Total Brand Retail'
         },
         xAxis: {
-            categories: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], 
+            categories: ['July', 'August', 'September', 'October', 'November'], 
             title: {
                 text: 'Months'
             }
@@ -74,7 +77,7 @@ function fetchSuccess() {
         yAxis: {
             min: 0,
             title: {
-                text: 'F15 Totals'
+                text: 'Total Sales'
             }
         },
         legend: {
@@ -92,8 +95,8 @@ function fetchSuccess() {
         tooltip: {
             formatter: function () {
                 return '<b>' + this.x + '</b><br/>' +
-                    this.series.name + ': ' + this.y + '<br/>' +
-                    'Total: ' + this.point.stackTotal;
+                    this.series.name + ': $' + this.y + '<br/>' +
+                    'Total: $' + this.point.stackTotal;
             }
         },
         // pie chart at bottom?
